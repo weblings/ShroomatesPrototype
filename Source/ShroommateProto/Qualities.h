@@ -16,7 +16,7 @@ class SHROOMMATEPROTO_API UQualities : public UActorComponent
 	UPROPERTY(Category = Qualities, EditAnywhere)
 	float light;
 	UPROPERTY(Category = Qualities, EditAnywhere)
-	float temperature;
+	float hunger;
 	UPROPERTY(Category = Qualities, EditAnywhere)
 	float humidity;
 
@@ -36,17 +36,17 @@ public:
 	
 	//Adds to them (can use negative numbers for subtracting)
 	float addToLight(float change);
-	float addToTemp(float change);
+	float addToHunger(float change);
 	float addToHumidity(float change);
 	
 	//setters
 	float setLight(float newLight);
-	float setTemp(float newTemp);
+	float setHunger(float newTemp);
 	float setHumidity(float newHumidity);
 
 	//getters
 	float getLight();
-	float getTemp();
+	float getHunger();
 	float getHumidity();
 
 

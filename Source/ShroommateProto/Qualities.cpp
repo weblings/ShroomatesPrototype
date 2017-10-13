@@ -49,15 +49,15 @@ float UQualities::addToLight(float change) {
 	return light;
 }
 
-float UQualities::addToTemp(float change) {
-	if (temperature + change >= 1) {
-		temperature = 1;
-	}else if (temperature + change <= 0) {
-		temperature = 0;
+float UQualities::addToHunger(float change) {
+	if (hunger + change >= 1) {
+		hunger = 1;
+	}else if (hunger + change <= 0) {
+		hunger = 0;
 	}else {
-		temperature += change;
+		hunger += change;
 	}
-	return temperature;
+	return hunger;
 }
 
 float UQualities::addToHumidity(float change) {
@@ -83,15 +83,15 @@ float UQualities::setLight(float newLight) {
 	return light;
 }
 
-float UQualities::setTemp(float newTemp) {
+float UQualities::setHunger(float newTemp) {
 	if (newTemp >= 1) {
-		temperature = 1;
+		hunger = 1;
 	}else if (newTemp <= 0) {
-		temperature = 0;
+		hunger = 0;
 	}else {
-		temperature = newTemp;
+		hunger = newTemp;
 	}
-	return temperature;
+	return hunger;
 }
 
 float UQualities::setHumidity(float newHumidity) {
@@ -110,8 +110,8 @@ float UQualities::getLight() {
 	return light;
 }
 
-float UQualities::getTemp() {
-	return temperature;
+float UQualities::getHunger() {
+	return hunger;
 }
 
 float UQualities::getHumidity() {
