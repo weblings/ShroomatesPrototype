@@ -12,7 +12,7 @@ UQualities::UQualities()
 	PrimaryComponentTick.bCanEverTick = true;
 
 	light = 0.5f; //Having them all start at 0.5f for now
-	temperature = 0.5f;
+	hunger = 0.5f;
 	humidity = 0.5f;
 }
 

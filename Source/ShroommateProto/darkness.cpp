@@ -4,6 +4,8 @@
 #include "ShroommateProtoCharacter.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/BoxComponent.h"
+#include "Qualities.h"
+#define print(text) if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 1.5, FColor::White,text)
 
 
 // Sets default values
@@ -35,7 +37,12 @@ void Adarkness::Tick(float DeltaTime)
 	if (inShade && objectInShade->GetName() == "Character") {
 		FVector NewScale = objectInShade->GetActorScale();
 		objectInShade->SetActorRelativeScale3D(NewScale + FVector(0.001f, 0.001f, 0.001f));
-		
+		AShroommateProtoCharacter* tempChar = Cast<AShroommateProtoCharacter>(objectInShade);
+		UQualities* tempq = tempChar->FindComponentByClass<UQualities>();
+
+		//for testing purposes
+		tempq->addToLight(-0.001f);
+		print(FString::SanitizeFloat(tempq->getLight()));
 
 	}
 
