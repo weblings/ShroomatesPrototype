@@ -5,6 +5,8 @@
 #include "Components/StaticMeshComponent.h"
 #include "Components/BoxComponent.h"
 
+#define print(text) if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 1.5, FColor::White,text)
+
 
 // Sets default values
 AGrowtest::AGrowtest()
@@ -24,6 +26,7 @@ AGrowtest::AGrowtest()
 	Hitbox->bGenerateOverlapEvents = true;
 	Hitbox->OnComponentBeginOverlap.AddDynamic(this, &AGrowtest::onPlayerEnter);
 	Hitbox->SetupAttachment(RootComponent);
+
 	
 }
 
@@ -43,8 +46,15 @@ void AGrowtest::Tick(float DeltaTime)
 
 void AGrowtest::onPlayerEnter(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	FVector NewScale = OtherActor->GetActorScale();
-	OtherActor->SetActorRelativeScale3D(NewScale + FVector(0.5f, 0.5f, 0.5f));
-	Destroy();
+	//debug
+	print(OtherActor->GetName());
+	//need to change this to work with actual character
+	//make sure its actually the player touching it
+	if (OtherActor->GetName() == "Character") {
+		FVector NewScale = OtherActor->GetActorScale();
+		OtherActor->SetActorRelativeScale3D(NewScale + FVector(0.5f, 0.5f, 0.5f));
+		//remove actor from scene
+		Destroy();
+	}
 }
 

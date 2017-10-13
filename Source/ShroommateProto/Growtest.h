@@ -2,7 +2,8 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
+
+#include "Engine.h"
 #include "GameFramework/Actor.h"
 #include "Growtest.generated.h"
 
@@ -21,7 +22,7 @@ class SHROOMMATEPROTO_API AGrowtest : public AActor
 public:	
 	// Sets default values for this actor's properties
 	AGrowtest();
-
+	
 	//set mesh component
 	
 
