@@ -2,6 +2,7 @@
 
 #include "Growtest.h"
 #include "ShroommateProtoCharacter.h"
+#include "Qualities.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/BoxComponent.h"
 
@@ -26,6 +27,7 @@ AGrowtest::AGrowtest()
 	Hitbox->bGenerateOverlapEvents = true;
 	Hitbox->OnComponentBeginOverlap.AddDynamic(this, &AGrowtest::onPlayerEnter);
 	Hitbox->SetupAttachment(RootComponent);
+	
 
 	
 }
@@ -53,6 +55,10 @@ void AGrowtest::onPlayerEnter(UPrimitiveComponent * OverlappedComp, AActor * Oth
 	if (OtherActor->GetName() == "Character") {
 		FVector NewScale = OtherActor->GetActorScale();
 		OtherActor->SetActorRelativeScale3D(NewScale + FVector(0.5f, 0.5f, 0.5f));
+		AShroommateProtoCharacter* tempChar = Cast<AShroommateProtoCharacter>(OtherActor);
+		UQualities* tempq = tempChar->FindComponentByClass<UQualities>();
+		tempq->addToHumidity(0.01f);
+		print(FString::SanitizeFloat(tempq->getHumidity()));
 		//remove actor from scene
 		Destroy();
 	}
