@@ -31,6 +31,8 @@ public:
 
 
 
+
+
 protected:
 
 	/** Resets HMD orientation in VR. */

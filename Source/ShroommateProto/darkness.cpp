@@ -45,6 +45,7 @@ void Adarkness::onPlayerEnterShadow(UPrimitiveComponent * OverlappedComp, AActor
 {
 	objectInShade = OtherActor;
 	inShade = true;
+	
 }
 
 void Adarkness::onPlayerExitShadow(UPrimitiveComponent* OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex)
