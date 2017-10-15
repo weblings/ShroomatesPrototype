@@ -41,6 +41,10 @@ void UQualities::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompo
 	addToLight(-decayRate);
 	addToHunger(-decayRate);
 	addToHumidity(-decayRate);
+
+	//Update size scores
+	curSize = NewScale.X;
+	if (curSize > largestSize) largestSize = curSize;
 }
 
 // My functions -------------------------------------------------------

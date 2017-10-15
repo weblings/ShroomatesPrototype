@@ -25,6 +25,11 @@ class SHROOMMATEPROTO_API UQualities : public UActorComponent
 	UPROPERTY(EditAnywhere)
 	float decayRate = .00001; //AG 10/14/17: Decays qualities over time
 
+	UPROPERTY(Category = Qualities, EditAnywhere)
+	float curSize; //AG 10/14/17: player's current size
+	UPROPERTY(Category = Qualities, EditAnywhere)
+	float largestSize = 0; //AG 10/14/17: player's largest size ever
+
 
 public:	
 	// Sets default values for this component's properties
