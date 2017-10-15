@@ -19,14 +19,28 @@ class SHROOMMATEPROTO_API UQualities : public UActorComponent
 	float hunger;
 	UPROPERTY(Category = Qualities, EditAnywhere)
 	float humidity;
+	
+	UPROPERTY(EditAnywhere)
+	float threshold = .1; //AG 10/14/17: Adding threshold for growthRate()
+	UPROPERTY(EditAnywhere)
+	float decayRate = .00001; //AG 10/14/17: Decays qualities over time
+
 
 public:	
 	// Sets default values for this component's properties
 	UQualities();
 
 protected:
+
+	//AG 10/14/17: Protected vars	
+	AActor * player; //will be used to access actor attached to this script
+
 	// Called when the game starts
 	virtual void BeginPlay() override;
+	
+	//AG 10/14/17: Helper function for growthRate()
+	int qualityState(float q);
+	
 
 public:	
 	// Called every frame
@@ -49,7 +63,8 @@ public:
 	float getHunger();
 	float getHumidity();
 
-
+	//AG 10/14/17: Adding function that determines if player should grow or shrink and by how much
+	float growthRate();
 
 		
 	
