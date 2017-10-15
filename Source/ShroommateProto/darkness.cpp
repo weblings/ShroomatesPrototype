@@ -41,7 +41,7 @@ void Adarkness::Tick(float DeltaTime)
 		UQualities* tempq = tempChar->FindComponentByClass<UQualities>();
 
 		//for testing purposes
-		tempq->addToLight(-0.001f);
+		tempq->addToLight(0.001f);
 		print(FString::SanitizeFloat(tempq->getLight()));
 
 	}

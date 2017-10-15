@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
+#include "Engine.h"
 #include "Components/ActorComponent.h"
 #include "Qualities.generated.h"
 
@@ -13,6 +13,7 @@ class SHROOMMATEPROTO_API UQualities : public UActorComponent
 	GENERATED_BODY()
 
 	//vars (Going to have these be 0-1 for now)
+	
 	UPROPERTY(Category = Qualities, EditAnywhere)
 	float light;
 	UPROPERTY(Category = Qualities, EditAnywhere)
@@ -34,6 +35,8 @@ class SHROOMMATEPROTO_API UQualities : public UActorComponent
 public:	
 	// Sets default values for this component's properties
 	UQualities();
+
+
 
 protected:
 

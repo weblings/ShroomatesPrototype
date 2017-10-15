@@ -2,6 +2,7 @@
 
 #include "Qualities.h"
 #include "ShroommateProtoCharacter.h"
+//#include "Kismet/KismetMathLibrary.h"
 
 
 // Sets default values for this component's properties
@@ -12,7 +13,8 @@ UQualities::UQualities()
 	PrimaryComponentTick.bCanEverTick = true;
 
 
-	light = 0.61f; //Having them all start at 0.5f for now
+	//light = 0.61f; //Having them all start at 0.5f for now
+	light = 0.61f;
 	hunger = 0.61f;
 	humidity = 0.61f;
 
@@ -53,35 +55,50 @@ void UQualities::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompo
 
 //Adds to them (can use negative numbers for subtracting)
 float UQualities::addToLight(float change) {
-	if (light + change >= 1) {
+	//Gross
+	/*if(light + change >= 1) {
 		light = 1;
 	}else if (light + change <= 0) {
 		light = 0;
 	}else {
 		light += change;
 	}
+	return light;*/
+
+	light = FMath::Clamp(light += change, 0.f, 1.f);
 	return light;
+	
+	
+	
+	
 }
 
 float UQualities::addToHunger(float change) {
-	if (hunger + change >= 1) {
+	/*if (hunger + change >= 1) {
 		hunger = 1;
 	}else if (hunger + change <= 0) {
 		hunger = 0;
 	}else {
 		hunger += change;
 	}
+	return hunger;*/
+
+	hunger = FMath::Clamp(hunger += change, 0.f, 1.f);
 	return hunger;
+
 }
 
 float UQualities::addToHumidity(float change) {
-	if (humidity + change >= 1) {
+	/*if (humidity + change >= 1) {
 		humidity = 1;
 	}else if (humidity + change <= 0) {
 		humidity = 0;
 	}else {
 		humidity += change;
 	}
+	return humidity;*/
+
+	humidity = FMath::Clamp(humidity += change, 0.f, 1.f);
 	return humidity;
 }
 

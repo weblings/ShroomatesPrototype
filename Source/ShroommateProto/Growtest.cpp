@@ -59,7 +59,7 @@ void AGrowtest::onPlayerEnter(UPrimitiveComponent * OverlappedComp, AActor * Oth
 		UQualities* tempq = tempChar->FindComponentByClass<UQualities>();
 
 		//for testing purposes
-		tempq->addToHunger(-0.5f);
+		tempq->addToHunger(0.5f);
 		print(FString::SanitizeFloat(tempq->getHunger()));
 		//remove actor from scene
 		Destroy();
