@@ -21,11 +21,15 @@ class SHROOMMATEPROTO_API AGrowtest : public AActor
 	class UShapeComponent* Hitbox;
 
 	UPROPERTY(Category = Type, EditAnywhere)
-		TArray<FString> Type = { TEXT("Hunger"), TEXT("Humidity"), TEXT("Light") };
+	TArray<FString> Type = { TEXT("Hunger"), TEXT("Humidity"), TEXT("Light") };
+
+	APlayerController* Controller;
 	
 public:	
 	// Sets default values for this actor's properties
+
 	AGrowtest();
+
 	
 	//set mesh component
 	
