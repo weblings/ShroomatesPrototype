@@ -23,7 +23,7 @@ void UQualities::BeginPlay()
 	Super::BeginPlay();
 	player = GetOwner();
 	// ...
-	
+
 }
 
 
@@ -154,3 +154,4 @@ float UQualities::growthRate() {
 	else return .0001; //if (state == 3)  //y=(.02)^1.1
 
 }
+
