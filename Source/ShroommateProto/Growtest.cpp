@@ -57,8 +57,10 @@ void AGrowtest::onPlayerEnter(UPrimitiveComponent * OverlappedComp, AActor * Oth
 		OtherActor->SetActorRelativeScale3D(NewScale + FVector(0.5f, 0.5f, 0.5f));
 		AShroommateProtoCharacter* tempChar = Cast<AShroommateProtoCharacter>(OtherActor);
 		UQualities* tempq = tempChar->FindComponentByClass<UQualities>();
-		tempq->addToHumidity(0.01f);
-		print(FString::SanitizeFloat(tempq->getHumidity()));
+
+		//for testing purposes
+		tempq->addToHunger(-0.5f);
+		print(FString::SanitizeFloat(tempq->getHunger()));
 		//remove actor from scene
 		Destroy();
 	}

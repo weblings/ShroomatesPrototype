@@ -11,9 +11,11 @@ UQualities::UQualities()
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
 
+
 	light = 0.61f; //Having them all start at 0.5f for now
 	hunger = 0.61f;
 	humidity = 0.61f;
+
 }
 
 
