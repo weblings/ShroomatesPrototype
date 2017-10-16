@@ -27,7 +27,7 @@ AGrowtest::AGrowtest()
 	Hitbox->bGenerateOverlapEvents = true;
 	Hitbox->OnComponentBeginOverlap.AddDynamic(this, &AGrowtest::onPlayerEnter);
 	Hitbox->SetupAttachment(RootComponent);
-	Controller = Cast<APlayerController>(GetWorld()->GetFirstPlayerController()->GetCharacter()->GetController());
+	//Controller = GetWorld()->GetFirstPlayerController();
 
 
 	
@@ -56,7 +56,8 @@ void AGrowtest::onPlayerEnter(UPrimitiveComponent * OverlappedComp, AActor * Oth
 	print(OtherActor->GetName());
 	//need to change this to work with actual character
 	//make sure its actually the player touching it
-	if (OtherActor->GetName() == "Character" && Controller->IsInputKeyDown(EKeys::F)) {
+	//&& Controller->IsInputKeyDown(EKeys::F)
+	if (OtherActor->GetName() == "Character") {
 		FVector NewScale = OtherActor->GetActorScale();
 		OtherActor->SetActorRelativeScale3D(NewScale + FVector(0.5f, 0.5f, 0.5f));
 		AShroommateProtoCharacter* tempChar = Cast<AShroommateProtoCharacter>(OtherActor);

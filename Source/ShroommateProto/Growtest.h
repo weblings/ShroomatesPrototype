@@ -2,7 +2,6 @@
 
 #pragma once
 
-
 #include "Engine.h"
 #include "GameFramework/Actor.h"
 #include "Growtest.generated.h"
@@ -23,13 +22,13 @@ class SHROOMMATEPROTO_API AGrowtest : public AActor
 	UPROPERTY(Category = Type, EditAnywhere)
 	TArray<FString> Type = { TEXT("Hunger"), TEXT("Humidity"), TEXT("Light") };
 
-	APlayerController* Controller;
+	
 	
 public:	
 	// Sets default values for this actor's properties
 
 	AGrowtest();
-
+	APlayerController* Controller;
 	
 	//set mesh component
 	
