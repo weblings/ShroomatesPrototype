@@ -21,6 +21,7 @@ public:
 	// Sets default values for this actor's properties
 	Adarkness();
 	bool inShade = false;
+	float timeInShade = 0.f;
 	AActor* objectInShade;
 
 protected:

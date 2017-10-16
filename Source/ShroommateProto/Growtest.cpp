@@ -27,6 +27,9 @@ AGrowtest::AGrowtest()
 	Hitbox->bGenerateOverlapEvents = true;
 	Hitbox->OnComponentBeginOverlap.AddDynamic(this, &AGrowtest::onPlayerEnter);
 	Hitbox->SetupAttachment(RootComponent);
+	//Controller = GetWorld()->GetFirstPlayerController();
+
+
 	
 
 	
@@ -48,10 +51,12 @@ void AGrowtest::Tick(float DeltaTime)
 
 void AGrowtest::onPlayerEnter(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+
 	//debug
 	print(OtherActor->GetName());
 	//need to change this to work with actual character
 	//make sure its actually the player touching it
+	//&& Controller->IsInputKeyDown(EKeys::F)
 	if (OtherActor->GetName() == "Character") {
 		FVector NewScale = OtherActor->GetActorScale();
 		OtherActor->SetActorRelativeScale3D(NewScale + FVector(0.5f, 0.5f, 0.5f));
@@ -59,7 +64,7 @@ void AGrowtest::onPlayerEnter(UPrimitiveComponent * OverlappedComp, AActor * Oth
 		UQualities* tempq = tempChar->FindComponentByClass<UQualities>();
 
 		//for testing purposes
-		tempq->addToHunger(-0.5f);
+		tempq->addToHunger(0.5f);
 		print(FString::SanitizeFloat(tempq->getHunger()));
 		//remove actor from scene
 		Destroy();

@@ -2,7 +2,6 @@
 
 #pragma once
 
-
 #include "Engine.h"
 #include "GameFramework/Actor.h"
 #include "Growtest.generated.h"
@@ -15,13 +14,21 @@ class SHROOMMATEPROTO_API AGrowtest : public AActor
 	UPROPERTY(EditAnywhere, meta = (AllowPrivateAccess = "true"))
 	class UStaticMeshComponent* GrowMesh;
 
+
 	//set pickup hitbox
 	UPROPERTY(EditAnywhere)
 	class UShapeComponent* Hitbox;
+
+	UPROPERTY(Category = Type, EditAnywhere)
+	TArray<FString> Type = { TEXT("Hunger"), TEXT("Humidity"), TEXT("Light") };
+
+	
 	
 public:	
 	// Sets default values for this actor's properties
+
 	AGrowtest();
+	APlayerController* Controller;
 	
 	//set mesh component
 	

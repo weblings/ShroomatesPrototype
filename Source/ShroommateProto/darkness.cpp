@@ -35,14 +35,19 @@ void Adarkness::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	if (inShade && objectInShade->GetName() == "Character") {
-		FVector NewScale = objectInShade->GetActorScale();
-		objectInShade->SetActorRelativeScale3D(NewScale + FVector(0.001f, 0.001f, 0.001f));
-		AShroommateProtoCharacter* tempChar = Cast<AShroommateProtoCharacter>(objectInShade);
-		UQualities* tempq = tempChar->FindComponentByClass<UQualities>();
+		timeInShade += DeltaTime;
+		if (timeInShade > 0.5f) {
+			FVector NewScale = objectInShade->GetActorScale();
+			objectInShade->SetActorRelativeScale3D(NewScale + FVector(0.001f, 0.001f, 0.001f));
+			AShroommateProtoCharacter* tempChar = Cast<AShroommateProtoCharacter>(objectInShade);
+			UQualities* tempq = tempChar->FindComponentByClass<UQualities>();
 
-		//for testing purposes
-		tempq->addToLight(-0.001f);
-		print(FString::SanitizeFloat(tempq->getLight()));
+			//for testing purposes
+			tempq->addToLight(0.001f);
+			print(FString::SanitizeFloat(tempq->getLight()));
+			timeInShade = 0;
+		}
+		//print(FString::SanitizeFloat(DeltaTime));
 
 	}
 
@@ -58,5 +63,6 @@ void Adarkness::onPlayerEnterShadow(UPrimitiveComponent * OverlappedComp, AActor
 void Adarkness::onPlayerExitShadow(UPrimitiveComponent* OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex)
 {
 	inShade = false;
+	timeInShade = 0;
 }
 
