@@ -35,9 +35,18 @@ public:
 	UPROPERTY(Category = sound, EditAnywhere)
 	class USoundCue* squishsquish;
 
-	//AG 10/22/17: Adding boolean for clambor points
+	//AG 10/22/17: Clambor point stuff
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
 	bool onWall;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
+	bool justJumped;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
+	float wallRate;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
+	float timeSinceWallJump;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
+	bool canWall = false;
+
 
 protected:
 

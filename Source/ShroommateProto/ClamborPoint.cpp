@@ -39,12 +39,12 @@ void AClamborPoint::Tick(float DeltaTime)
 void AClamborPoint::onPlayerEnter(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) {
 	if (OtherActor->GetName() == "Character") {
 		AShroommateProtoCharacter* tempChar = Cast<AShroommateProtoCharacter>(OtherActor);
-		tempChar->GetCharacterMovement()->SetMovementMode(MOVE_Flying);//bCheatFlying;// ->bCheatFlying();
-		tempChar->GetCharacterMovement()->StopMovementImmediately();
-
-		/*APlayerController* player = UGameplayStatics::GetPlayerController(GetWorld(), 0);
-		player->ClientIgnoreMoveInput(true);*/
-		tempChar->onWall = true;
+		tempChar->canWall = true;
 	}
+}
+
+void AClamborPoint::onPlayerExit(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) {
+	AShroommateProtoCharacter* tempChar = Cast<AShroommateProtoCharacter>(OtherActor);
+	tempChar->canWall = false;
 }
 

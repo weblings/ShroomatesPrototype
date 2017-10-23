@@ -57,7 +57,11 @@ AShroommateProtoCharacter::AShroommateProtoCharacter()
 	shroomAudio->bAutoActivate = false;
 	shroomAudio->SetupAttachment(RootComponent);
 
+	//AG 10/22/17: Clambor point stuff
 	onWall = false;
+	justJumped = false;
+	wallRate = 0.5f;
+	timeSinceWallJump = 40.0f;
 	
 }
 
@@ -171,16 +175,45 @@ void AShroommateProtoCharacter::MoveRight(float Value)
 void AShroommateProtoCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	//AG 10/22/17: Get on wall
+	/*if (canWall && timeSinceWallJump >= wallRate) {
+		APlayerController* Controller = GetWorld()->GetFirstPlayerController();
+		if (Controller != NULL) {
+			if (Controller->IsInputKeyDown(EKeys::SpaceBar)) {
+				GetCharacterMovement()->SetMovementMode(MOVE_Flying);
+				GetCharacterMovement()->StopMovementImmediately();
+				onWall = true;
+			}
+		}
+	}
 	
-	if (onWall) {
+	//AG 10/22/17: Jump off wall
+	if ((onWall && !justJumped) || (onWall && timeSinceWallJump >= wallRate)) {
 		APlayerController* Controller = GetWorld()->GetFirstPlayerController();
 		if (Controller != NULL) {
 			if (Controller->IsInputKeyDown(EKeys::SpaceBar)) {
 				GetCharacterMovement()->SetMovementMode(MOVE_Walking);
 				Jump();
 				onWall = false;
+				justJumped = true;
+				timeSinceWallJump = 0;
 			}
 		}
 	}
+
+	//AG 10/22/17: Reset timer for when jumped off wall
+	if (justJumped && timeSinceWallJump < wallRate) {
+		timeSinceWallJump += DeltaTime;
+	}
+	else {
+		justJumped = false;
+	}
+
+	print(GetCharacterMovement()->GetMovementName());
+	print("timeSinceWallJump: " + FString::SanitizeFloat(timeSinceWallJump));*/
+
+
+
 
 }

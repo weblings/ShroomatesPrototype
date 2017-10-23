@@ -2,10 +2,10 @@
 
 #include "Qualities3.h"
 #include "ShroommateProtoCharacter.h"
-#define print(text) if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 1.5, FColor::White,text)
+/*#define print(text) if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 1.5, FColor::White,text)
 #define print2(text) if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 1.5, FColor::Purple,text)
 #define print3(text) if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 1.5, FColor::Green,text)
-#define print4(text) if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 1.5, FColor::Red,text)
+#define print4(text) if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 1.5, FColor::Red,text)*/
 
 
 
@@ -54,11 +54,11 @@ void UQualities3::TickComponent(float DeltaTime, ELevelTick TickType, FActorComp
 	curSize = NewScale.X;
 	if (curSize > largestSize) largestSize = curSize;
 
-	FString teksht2 = "Current Size: ";
+	/*FString teksht2 = "Current Size: ";
 	teksht2.Append(FString::SanitizeFloat(curSize));
 	teksht2.Append("\nLargest Size: ");
 	teksht2.Append(FString::SanitizeFloat(largestSize));
-	print2(teksht2);
+	print2(teksht2);*/
 	AShroommateProtoCharacter* tempChar = Cast<AShroommateProtoCharacter>(player);
 	USpringArmComponent* tempCam = tempChar->GetCameraBoom();
 	tempCam->TargetArmLength += 1000 * growthAmount;
@@ -165,7 +165,7 @@ float UQualities3::growthRate() {
 	//state += hunState;
 	//state += ligState;
 
-	FString teksht = "Hunger: ";
+	/*FString teksht = "Hunger: ";
 	teksht.Append(FString::SanitizeFloat(hunger));
 	printSelect(teksht, hunState);
 	teksht = "Humidity: ";
@@ -173,7 +173,7 @@ float UQualities3::growthRate() {
 	printSelect(teksht, humState);
 	teksht = "Darkness: ";
 	teksht.Append(FString::SanitizeFloat(light));
-	printSelect(teksht, ligState);
+	printSelect(teksht, ligState);*/
 
 	if (state == -3) {
 		return -.0001; //-y=(.02)^1.1
@@ -198,7 +198,7 @@ float UQualities3::growthRate() {
 	}
 }
 
-void UQualities3::printSelect(FString t, int state) {
+/*void UQualities3::printSelect(FString t, int state) {
 	if (state == 1) {
 		print3(t);
 	}
@@ -206,7 +206,7 @@ void UQualities3::printSelect(FString t, int state) {
 		print(t);
 	}
 	else { print4(t); }
-}
+}*/
 
 float UQualities3::getCurSize() {
 	return curSize;
